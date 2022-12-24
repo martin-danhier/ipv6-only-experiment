@@ -1,0 +1,18 @@
+
+# Name of interface to create
+tun-device nat64
+
+# TAYGA's IPv4 address.
+ipv4-addr {{nat64.ipv4}}
+
+# TAYGA's IPv6 address.
+ipv6-addr {{nat64.ipv6}}
+
+# The NAT64 prefix.
+prefix 64:ff9b::/96
+
+# Dynamic pool prefix.
+dynamic-pool 192.168.255.0/24
+
+# Persistent data storage directory.
+data-dir /var/db/tayga

@@ -1,0 +1,18 @@
+# /etc/ppp/peers/proximus
+
+plugin pppoe.so
+# rp_pppoe_ac 'your ac name'
+# rp_pppoe_service 'your service name'
+
+# network interface
+enp3s0
+# login name
+name "<network_name>@PROXIMUS" # Change this to your login name
+usepeerdns
+persist
+# Uncomment this if you want to enable dial on demand
+#demand
+#idle 180
+defaultroute
+hide-password
+noauth

@@ -1,0 +1,16 @@
+[Unit]
+Description = Periodic router config update and fix
+After = network.target
+
+[Service]
+Type = simple
+WorkingDirectory = /home/admin/Documents/autoconfig
+ExecStart = python ./autoconfig.py
+User = root
+Group = root
+Restart = always
+RestartSec = 60
+TimeoutStartSec = infinity
+
+[Install]
+WantedBy = post-multi-user.target

@@ -1,0 +1,52 @@
+# WIFI interface
+interface wlp2s0
+{
+    AdvSendAdvert on;
+
+    # Intervals
+    # Can be increased if not using 6to4
+    MinRtrAdvInterval 6;
+    MaxRtrAdvInterval 30;
+
+    # Disable mobile IPv6
+    AdvHomeAgentFlag off;
+
+    AdvReachableTime 30000;
+
+    # Standard prefix
+    prefix ::/64
+    {
+        AdvOnLink on;
+        AdvAutonomous on;
+        AdvRouterAddr off;
+
+        AdvValidLifetime 86400;
+        AdvPreferredLifetime 72000;
+        Base6Interface ppp0;
+    };
+
+    RDNSS {{router.ipv6}}
+    {
+
+    };
+
+    # Route to nat64
+    route {{nat64.ipv6}}/128
+    {
+        AdvRoutePreference medium;
+        AdvRouteLifetime 86400;
+    };
+
+    # route 64:ff9b::/96
+    # {
+    #     AdvRoutePreference medium;
+    #     AdvRouteLifetime 86400;
+    # };
+
+    # NAT64 prefix
+    nat64prefix 64:ff9b::/96
+    {
+
+    };
+
+};
